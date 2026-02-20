@@ -1,0 +1,1948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NightForge — Premium Magnesium Tri-Blend | Resurrect Nutrition</title>
+  <meta name="description" content="Build strength while you sleep. NightForge is a premium magnesium tri-blend designed for deep recovery, mental clarity, and nighttime restoration. No fillers. No cheap forms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-tertiary: #1a1a1a;
+      --bg-card: #141414;
+      --orange: #e8600a;
+      --orange-light: #ff7a1a;
+      --orange-glow: rgba(232, 96, 10, 0.15);
+      --orange-glow-strong: rgba(232, 96, 10, 0.3);
+      --silver: #c0c0c0;
+      --silver-light: #d9d9d9;
+      --silver-dark: #8a8a8a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --border: #222222;
+      --border-light: #2a2a2a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== UTILITY ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .highlight {
+      color: var(--orange);
+    }
+
+    .silver {
+      color: var(--silver-light);
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-brand-icon svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .nav-brand-text {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .nav-brand-text span {
+      color: var(--silver-dark);
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: #fff !important;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-light);
+      transform: translateY(-1px);
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to top, var(--bg-primary), transparent);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 100px;
+      padding: 8px 18px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--silver);
+      margin-bottom: 32px;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--orange);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.08;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      max-width: 480px;
+    }
+
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .hero-feature-tag {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--silver);
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      padding: 6px 14px;
+      border-radius: 4px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-feature-tag svg {
+      width: 14px;
+      height: 14px;
+      color: var(--orange);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--orange);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232, 96, 10, 0.3);
+    }
+
+    .btn-primary svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 16px 8px;
+      transition: color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text-primary);
+    }
+
+    .hero-image {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      max-width: 480px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--orange-glow) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-image-placeholder svg {
+      width: 64px;
+      height: 64px;
+      color: var(--text-muted);
+    }
+
+    .hero-image-placeholder p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .hero-image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    /* ===== SOCIAL PROOF BAR ===== */
+    .proof-bar {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .proof-bar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .proof-item {
+      text-align: center;
+    }
+
+    .proof-item-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 4px;
+    }
+
+    .proof-item-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 48px;
+      background: var(--border-light);
+    }
+
+    /* ===== BENEFITS ===== */
+    .benefits {
+      padding: 120px 0;
+    }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .benefits-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px 32px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-4px);
+    }
+
+    .benefit-card:hover::before {
+      opacity: 1;
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--orange-glow);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .benefit-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--orange);
+    }
+
+    .benefit-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .benefit-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ===== WHY DIFFERENT ===== */
+    .difference {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+      position: relative;
+    }
+
+    .difference::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+    }
+
+    .difference-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .difference-content {
+      position: sticky;
+      top: 120px;
+    }
+
+    .comparison-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .comparison-card {
+      border-radius: 12px;
+      padding: 36px;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-card--bad {
+      background: linear-gradient(135deg, #1a1010, var(--bg-card));
+      border-color: #2a1515;
+    }
+
+    .comparison-card--good {
+      background: linear-gradient(135deg, #1a1508, var(--bg-card));
+      border-color: var(--orange);
+      box-shadow: 0 0 40px var(--orange-glow);
+    }
+
+    .comparison-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .comparison-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .comparison-card--bad .comparison-card-icon {
+      background: rgba(200, 50, 50, 0.15);
+    }
+
+    .comparison-card--bad .comparison-card-icon svg {
+      color: #c83232;
+      width: 20px;
+      height: 20px;
+    }
+
+    .comparison-card--good .comparison-card-icon {
+      background: var(--orange-glow);
+    }
+
+    .comparison-card--good .comparison-card-icon svg {
+      color: var(--orange);
+      width: 20px;
+      height: 20px;
+    }
+
+    .comparison-card-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .comparison-card--bad .comparison-card-label {
+      color: #c83232;
+    }
+
+    .comparison-card--good .comparison-card-label {
+      color: var(--orange);
+    }
+
+    .comparison-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .comparison-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .comparison-list li svg {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .comparison-card--bad .comparison-list li svg {
+      color: #c83232;
+    }
+
+    .comparison-card--good .comparison-list li svg {
+      color: var(--orange);
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how-it-works {
+      padding: 120px 0;
+    }
+
+    .how-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .how-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      left: calc(16.66% + 48px);
+      right: calc(16.66% + 48px);
+      height: 1px;
+      background: linear-gradient(90deg, var(--orange), var(--border-light), var(--orange));
+    }
+
+    .step {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .step-number span {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--orange);
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+
+    /* ===== INGREDIENTS ===== */
+    .ingredients {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+    }
+
+    .ingredients-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .ingredients-content .section-subtitle {
+      margin-bottom: 32px;
+    }
+
+    .ingredient-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .ingredient-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .ingredient-marker {
+      width: 8px;
+      height: 8px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .ingredient-item h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .ingredient-item p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .ingredients-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+    }
+
+    .tri-blend-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 32px;
+    }
+
+    .tri-blend-forms {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .tri-blend-form {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 24px;
+    }
+
+    .tri-blend-form h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--silver-light);
+    }
+
+    .tri-blend-form p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ===== WHO IT'S FOR ===== */
+    .who {
+      padding: 120px 0;
+    }
+
+    .who-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .who-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .who-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .who-card:hover {
+      border-color: var(--border-light);
+      transform: translateY(-4px);
+    }
+
+    .who-card-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--orange-glow);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .who-card-icon svg {
+      width: 26px;
+      height: 26px;
+      color: var(--orange);
+    }
+
+    .who-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .who-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ===== FOUNDER ===== */
+    .founder {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+    }
+
+    .founder-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .founder-image-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .founder-image-wrapper p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .founder-content .section-subtitle {
+      margin-bottom: 24px;
+    }
+
+    .founder-quote {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--silver-light);
+      border-left: 3px solid var(--orange);
+      padding-left: 24px;
+      margin: 32px 0;
+      line-height: 1.8;
+    }
+
+    .founder-name {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .founder-title {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* ===== FAQ ===== */
+    .faq {
+      padding: 120px 0;
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .faq-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 24px 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover {
+      background: var(--bg-tertiary);
+    }
+
+    .faq-question svg {
+      width: 20px;
+      height: 20px;
+      color: var(--orange);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-question svg {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 28px 24px;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ===== EMAIL SIGNUP ===== */
+    .signup {
+      padding: 120px 0;
+      background: var(--bg-secondary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup::before {
+      content: '';
+      position: absolute;
+      top: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 900px;
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .signup-inner {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .signup-inner .section-title {
+      margin-bottom: 16px;
+    }
+
+    .signup-inner .section-subtitle {
+      margin: 0 auto 20px;
+    }
+
+    .signup-perks {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .signup-perk {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .signup-perk svg {
+      width: 16px;
+      height: 16px;
+      color: var(--orange);
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .signup-form input {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .signup-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .signup-form input:focus {
+      border-color: var(--orange);
+    }
+
+    .signup-form button {
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .signup-form button:hover {
+      background: var(--orange-light);
+      transform: translateY(-1px);
+    }
+
+    .signup-disclaimer {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .final-cta::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--orange-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .final-cta-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .final-cta .section-title {
+      max-width: 700px;
+      margin: 0 auto 24px;
+    }
+
+    .final-cta .section-subtitle {
+      margin: 0 auto 40px;
+    }
+
+    .final-cta-features {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .final-cta-feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: var(--silver);
+      font-weight: 500;
+    }
+
+    .final-cta-feature svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 48px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-brand {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--text-secondary);
+    }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: center;
+      }
+
+      .hero-subtitle {
+        margin: 0 auto 16px;
+      }
+
+      .hero-features {
+        justify-content: center;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-image-placeholder {
+        max-width: 360px;
+        margin: 0 auto;
+      }
+
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .difference-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .difference-content {
+        position: static;
+        text-align: center;
+      }
+
+      .difference-content .section-subtitle {
+        margin: 0 auto;
+      }
+
+      .ingredients-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .who-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .founder-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .founder-image-wrapper {
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: block;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 120px 0 80px;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .who-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .proof-bar-inner {
+        gap: 32px;
+      }
+
+      .proof-divider {
+        display: none;
+      }
+
+      .signup-form {
+        flex-direction: column;
+      }
+
+      .final-cta-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <div class="nav-brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <div class="nav-brand-text">Resurrect <span>Nutrition</span></div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#difference">Why NightForge</a></li>
+        <li><a href="#ingredients">Ingredients</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="checkout.html" class="nav-cta">Shop Now</a></li>
+      </ul>
+      <button class="nav-mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('nav-links--open')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Premium Magnesium Tri-Blend
+          </div>
+          <h1 class="hero-title">
+            Build <span class="highlight">Strength</span><br>
+            While You <span class="silver">Sleep</span>
+          </h1>
+          <p class="hero-subtitle">
+            NightForge is a premium magnesium tri-blend engineered for deep recovery, mental clarity, and nighttime restoration. No fillers. No cheap forms. Just results.
+          </p>
+          <div class="hero-features">
+            <span class="hero-feature-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              No Fillers
+            </span>
+            <span class="hero-feature-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              No Buffers
+            </span>
+            <span class="hero-feature-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Tri-Blend Formula
+            </span>
+            <span class="hero-feature-tag">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Night Optimized
+            </span>
+          </div>
+          <div class="hero-actions">
+            <a href="checkout.html" class="btn-primary">
+              Shop NightForge
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#benefits" class="btn-secondary">
+              Learn More
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="6 9 12 15 18 9"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-placeholder" id="heroImage">
+            <img src="hero.png" alt="NightForge Premium Magnesium Tri-Blend by Resurrect Nutrition — dark bottle with fire-forged aesthetic">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <section class="proof-bar">
+    <div class="container">
+      <div class="proof-bar-inner">
+        <div class="proof-item">
+          <div class="proof-item-value">3</div>
+          <div class="proof-item-label">Premium Mg Forms</div>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-item">
+          <div class="proof-item-value">0</div>
+          <div class="proof-item-label">Fillers or Buffers</div>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-item">
+          <div class="proof-item-value">100%</div>
+          <div class="proof-item-label">Premium Grade</div>
+        </div>
+        <div class="proof-divider"></div>
+        <div class="proof-item">
+          <div class="proof-item-value">Night</div>
+          <div class="proof-item-label">Optimized Formula</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="benefits-header">
+        <div class="section-label">Benefits</div>
+        <h2 class="section-title">What NightForge Does<br>for <span class="highlight">Your Body</span></h2>
+        <p class="section-subtitle">Every ingredient and every dose is formulated to work with your body's natural recovery processes during sleep.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="benefit-title">Deep Sleep Recovery</h3>
+          <p class="benefit-desc">Supports your body's natural ability to recover and restore during your deepest sleep cycles.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h3 class="benefit-title">Reduce Brain Fog</h3>
+          <p class="benefit-desc">Wake up with sharper mental clarity. Magnesium plays a critical role in cognitive function and neural communication.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3 class="benefit-title">Muscle Recovery</h3>
+          <p class="benefit-desc">Supports muscle repair and reduces tension so you wake up ready to perform at your best.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="benefit-title">Nervous System Support</h3>
+          <p class="benefit-desc">Magnesium is essential for nervous system regulation. NightForge provides the forms your body actually absorbs.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          </div>
+          <h3 class="benefit-title">Restore Mg Levels</h3>
+          <p class="benefit-desc">Most people are magnesium deficient. NightForge uses bioavailable forms to effectively restore your levels.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <h3 class="benefit-title">Night Optimized</h3>
+          <p class="benefit-desc">Specifically designed to be taken before bed. Works with your circadian rhythm, not against it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY DIFFERENT -->
+  <section class="difference" id="difference">
+    <div class="container">
+      <div class="difference-inner">
+        <div class="difference-content">
+          <div class="section-label">The Difference</div>
+          <h2 class="section-title">Most Magnesium<br>Supplements <span class="highlight">Don't Work</span></h2>
+          <p class="section-subtitle">The supplement industry is filled with cheap magnesium forms that your body can barely absorb. NightForge was built to fix that.</p>
+        </div>
+        <div class="comparison-cards">
+          <div class="comparison-card comparison-card--bad">
+            <div class="comparison-card-header">
+              <div class="comparison-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <div class="comparison-card-label">Typical Supplements</div>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Magnesium oxide &mdash; poor absorption rate
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Magnesium citrate &mdash; cheap filler form
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Loaded with fillers and buffers
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Designed for cost savings, not results
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Single-form magnesium only
+              </li>
+            </ul>
+          </div>
+          <div class="comparison-card comparison-card--good">
+            <div class="comparison-card-header">
+              <div class="comparison-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="comparison-card-label">NightForge</div>
+            </div>
+            <ul class="comparison-list">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Premium magnesium tri-blend formula
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Zero fillers, zero buffers
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                No magnesium oxide or citrate
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Designed for effectiveness
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Optimized for nighttime recovery
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how">
+    <div class="container">
+      <div class="how-header">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">Simple. Effective. <span class="highlight">Every Night.</span></h2>
+        <p class="section-subtitle">No complicated routines. Just one capsule before bed and let your body do the rest.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number"><span>1</span></div>
+          <h3 class="step-title">Take Before Bed</h3>
+          <p class="step-desc">Take NightForge 30 minutes before sleep. The tri-blend formula begins absorbing immediately.</p>
+        </div>
+        <div class="step">
+          <div class="step-number"><span>2</span></div>
+          <h3 class="step-title">Recover While You Sleep</h3>
+          <p class="step-desc">As you sleep, the magnesium works with your body's natural recovery processes to restore and rebuild.</p>
+        </div>
+        <div class="step">
+          <div class="step-number"><span>3</span></div>
+          <h3 class="step-title">Wake Up Restored</h3>
+          <p class="step-desc">Experience clearer thinking, better recovery, and reduced brain fog when you start your day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INGREDIENTS -->
+  <section class="ingredients" id="ingredients">
+    <div class="container">
+      <div class="ingredients-inner">
+        <div class="ingredients-content">
+          <div class="section-label">Ingredients</div>
+          <h2 class="section-title">Why the <span class="highlight">Tri-Blend</span> Matters</h2>
+          <p class="section-subtitle">A single form of magnesium has limitations. By combining three premium, bioavailable forms, NightForge delivers complete coverage that cheap supplements simply cannot match.</p>
+          <div class="ingredient-list">
+            <div class="ingredient-item">
+              <div class="ingredient-marker"></div>
+              <div>
+                <h4>Superior Bioavailability</h4>
+                <p>Each form is selected for high absorption rates, ensuring your body actually uses what you take.</p>
+              </div>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-marker"></div>
+              <div>
+                <h4>No Cheap Forms</h4>
+                <p>We exclude magnesium oxide and citrate entirely. These are the lowest-quality forms used to cut costs.</p>
+              </div>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-marker"></div>
+              <div>
+                <h4>Multi-Pathway Absorption</h4>
+                <p>Three forms means three pathways for absorption. Your body gets more magnesium from every dose.</p>
+              </div>
+            </div>
+            <div class="ingredient-item">
+              <div class="ingredient-marker"></div>
+              <div>
+                <h4>Clean Formula</h4>
+                <p>No fillers, no buffers, no unnecessary additives. What you see on the label is what you get.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ingredients-visual">
+          <div class="tri-blend-label">The Tri-Blend</div>
+          <div class="tri-blend-forms">
+            <div class="tri-blend-form">
+              <h4>Form 1 &mdash; Brain &amp; Cognition</h4>
+              <p>Targets cognitive function, helping reduce brain fog and support mental clarity during recovery.</p>
+            </div>
+            <div class="tri-blend-form">
+              <h4>Form 2 &mdash; Muscle &amp; Recovery</h4>
+              <p>Supports muscle relaxation and physical recovery, ideal for athletes and active individuals.</p>
+            </div>
+            <div class="tri-blend-form">
+              <h4>Form 3 &mdash; Sleep &amp; Nervous System</h4>
+              <p>Promotes deep sleep quality and nervous system regulation for complete nighttime restoration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="who" id="who">
+    <div class="container">
+      <div class="who-header">
+        <div class="section-label">Who It's For</div>
+        <h2 class="section-title">Built for People Who <span class="highlight">Demand Results</span></h2>
+        <p class="section-subtitle">NightForge is for anyone who is tired of supplements that don't work and wants real, noticeable improvement.</p>
+      </div>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+          <h4>Poor Sleepers</h4>
+          <p>If you struggle with sleep quality, NightForge supports deeper, more restorative rest.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          </div>
+          <h4>Brain Fog Sufferers</h4>
+          <p>Experience sharper mental clarity and reduced cognitive sluggishness.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h4>Athletes &amp; Gym-Goers</h4>
+          <p>Support muscle recovery and reduce soreness so you can train harder, more often.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h4>High Performers</h4>
+          <p>Optimize your recovery and cognition. Perform at your peak every single day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER STORY -->
+  <section class="founder" id="founder">
+    <div class="container">
+      <div class="founder-inner">
+        <div class="founder-image-wrapper">
+          <p>Founder photo</p>
+        </div>
+        <div class="founder-content">
+          <div class="section-label">The Story</div>
+          <h2 class="section-title">Why I Built <span class="highlight">NightForge</span></h2>
+          <p class="section-subtitle">I spent years trying magnesium supplements that promised results but never delivered. Cheap forms, fillers, and ingredients that looked good on a label but did nothing in the body.</p>
+          <blockquote class="founder-quote">
+            "I was tired of wasting money on supplements that didn't work. So I built one that does. NightForge uses only premium magnesium forms with zero compromise on quality."
+          </blockquote>
+          <p class="founder-name">Founder, Resurrect Nutrition</p>
+          <p class="founder-title">Driven by results, not profit margins</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-title">Common <span class="highlight">Questions</span></h2>
+        <p class="section-subtitle">Get clear, straightforward answers about NightForge and magnesium supplementation.</p>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What makes NightForge different from other magnesium supplements?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Most magnesium supplements use cheap forms like magnesium oxide or citrate, which have poor absorption rates. NightForge uses a premium tri-blend of three highly bioavailable magnesium forms with zero fillers and zero buffers. It's specifically formulated for nighttime recovery, not made to hit a low price point.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Why should I take magnesium at night?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Your body does most of its recovery and restoration during sleep. Magnesium supports muscle relaxation, nervous system regulation, and cognitive restoration &mdash; all processes that are most active during your sleep cycles. Taking it at night aligns the supplement with your body's natural recovery window.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Why should I avoid magnesium oxide?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Magnesium oxide has one of the lowest bioavailability rates of all magnesium forms &mdash; meaning your body absorbs very little of it. It's widely used in supplements because it's extremely cheap to manufacture, not because it's effective. If your magnesium supplement contains oxide, most of it is passing through you unused.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How long until I notice results?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              Many users report improvements in sleep quality within the first week. Cognitive clarity and reduced brain fog typically become noticeable within 2-3 weeks of consistent use. For full magnesium restoration, consistent daily use over 4-6 weeks is recommended, as your body rebuilds depleted stores.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Who should take NightForge?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              NightForge is designed for anyone aged 12 and up who wants to support their sleep quality, recovery, and mental clarity. It's particularly effective for athletes, people experiencing brain fog, anyone struggling with sleep, and health-conscious individuals who want a premium supplement that actually works.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What is a magnesium tri-blend?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              A tri-blend combines three different forms of magnesium, each targeting different functions in the body. Rather than relying on a single form with limited benefits, a tri-blend provides broader coverage &mdash; supporting brain function, muscle recovery, and sleep quality simultaneously through multiple absorption pathways.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMAIL SIGNUP -->
+  <section class="signup" id="signup">
+    <div class="container">
+      <div class="signup-inner">
+        <div class="section-label">Stay Informed</div>
+        <h2 class="section-title">Get the Science Behind <span class="highlight">Better Recovery</span></h2>
+        <p class="section-subtitle">Join our list for evidence-based content on magnesium, sleep optimization, and recovery science. No spam. No hype.</p>
+        <div class="signup-perks">
+          <span class="signup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Magnesium education
+          </span>
+          <span class="signup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Sleep optimization tips
+          </span>
+          <span class="signup-perk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Recovery science
+          </span>
+        </div>
+        <form class="signup-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="signup-disclaimer">No spam. Unsubscribe anytime. We respect your inbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="section-label">Ready?</div>
+        <h2 class="section-title">Stop Wasting Money on Supplements<br>That <span class="highlight">Don't Work</span></h2>
+        <p class="section-subtitle">NightForge is built for real results. Premium magnesium tri-blend. No fillers. No compromise.</p>
+        <div class="final-cta-features">
+          <span class="final-cta-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Premium Tri-Blend
+          </span>
+          <span class="final-cta-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Zero Fillers
+          </span>
+          <span class="final-cta-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Night Optimized
+          </span>
+          <span class="final-cta-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Science-Based
+          </span>
+        </div>
+        <a href="#" class="btn-primary" style="font-size:1.1rem; padding: 18px 44px;">
+          Shop NightForge Now
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Resurrect Nutrition Inc</div>
+        <ul class="footer-links">
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#difference">Why NightForge</a></li>
+          <li><a href="#ingredients">Ingredients</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+        <p class="footer-copy">&copy; 2025 Resurrect Nutrition Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isActive = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      // Open clicked if wasn't active
+      if (!isActive) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    // Smooth reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.benefit-card, .step, .who-card, .comparison-card, .ingredient-item, .tri-blend-form').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
