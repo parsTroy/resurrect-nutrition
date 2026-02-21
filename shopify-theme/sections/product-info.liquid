@@ -14,21 +14,33 @@
       <div class="product-details">
         <div class="section-label">{{ section.settings.product_label }}</div>
         <h1 class="product-title">{{ product.title }}</h1>
-        <div class="product-price">{{ product.price | money }}</div>
+        <div class="product-price" id="productPrice">{{ product.price | money }}</div>
         <div class="product-description">{{ product.description }}</div>
+
+        <!-- Low Stock Indicator -->
+        {% if section.settings.show_low_stock %}
+          <div class="low-stock">
+            <span class="low-stock-dot"></span>
+            <span><strong>{{ section.settings.low_stock_label }}</strong> &mdash; {{ section.settings.low_stock_text }}</span>
+          </div>
+        {% endif %}
 
         <!-- Add to Cart Form -->
         {% form 'product', product %}
           {% if product.variants.size > 1 %}
-            <div class="product-form-qty" style="margin-bottom:16px">
-              <label for="variant-select">Option</label>
-              <select id="variant-select" name="id" style="width:auto;padding-right:40px">
+            <!-- Multi-bottle / Variant Selector -->
+            <div class="qty-discount-bar">
+              <div class="qty-discount-options">
                 {% for variant in product.variants %}
-                  <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
-                    {{ variant.title }} — {{ variant.price | money }}
-                  </option>
+                  <div class="qty-option {% if variant == product.selected_or_first_available_variant %}selected{% endif %}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price }}" onclick="selectVariant(this)">
+                    <div class="qty-option-count">{{ variant.title }}</div>
+                    {% if variant.compare_at_price > variant.price %}
+                      <div class="qty-option-save">Save {{ variant.compare_at_price | minus: variant.price | money }}</div>
+                    {% endif %}
+                  </div>
                 {% endfor %}
-              </select>
+              </div>
+              <input type="hidden" name="id" id="variantInput" value="{{ product.selected_or_first_available_variant.id }}">
             </div>
           {% else %}
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -39,6 +51,19 @@
             <input type="number" id="qty" name="quantity" value="1" min="1" max="10">
           </div>
 
+          <!-- Free Shipping Progress -->
+          {% if section.settings.show_free_shipping %}
+            <div class="shipping-progress" id="shippingProgress">
+              <div class="shipping-progress-text">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="shippingText">You qualify for <strong>free shipping</strong></span>
+              </div>
+              <div class="shipping-bar">
+                <div class="shipping-bar-fill" id="shippingFill" style="width:100%"></div>
+              </div>
+            </div>
+          {% endif %}
+
           <button type="submit" class="btn-primary product-add-to-cart" {% unless product.available %}disabled{% endunless %}>
             {% if product.available %}
               {{ 'products.product.add_to_cart' | t }}
@@ -48,6 +73,14 @@
             {% endif %}
           </button>
         {% endform %}
+
+        <!-- Social Proof / Recent Activity -->
+        {% if section.settings.show_social_proof %}
+          <div class="recent-activity" id="recentActivity">
+            <span class="recent-activity-dot"></span>
+            <span id="activityText">{{ section.settings.social_proof_1 }}</span>
+          </div>
+        {% endif %}
 
         <!-- Trust Badges -->
         <div class="product-trust">
@@ -62,6 +95,10 @@
           <span class="product-trust-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
             Fast Shipping
+          </span>
+          <span class="product-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Quality Guaranteed
           </span>
         </div>
 
@@ -90,6 +127,21 @@
   </div>
 </section>
 
+<!-- Social proof messages data for JS rotation -->
+{% if section.settings.show_social_proof %}
+<script>
+  var socialProofMessages = [
+    {{ section.settings.social_proof_1 | json }},
+    {{ section.settings.social_proof_2 | json }},
+    {{ section.settings.social_proof_3 | json }},
+    {{ section.settings.social_proof_4 | json }},
+    {{ section.settings.social_proof_5 | json }}
+  ].filter(function(m) { return m && m.length > 0; });
+
+  var freeShippingThreshold = {{ section.settings.free_shipping_threshold | default: 50 }};
+</script>
+{% endif %}
+
 {% schema %}
 {
   "name": "Product Info",
@@ -99,6 +151,92 @@
       "id": "product_label",
       "label": "Product Label",
       "default": "Resurrect Nutrition"
+    },
+    {
+      "type": "header",
+      "content": "Low Stock Indicator"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_low_stock",
+      "label": "Show low stock notice",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "low_stock_label",
+      "label": "Low Stock Label",
+      "default": "Limited stock"
+    },
+    {
+      "type": "text",
+      "id": "low_stock_text",
+      "label": "Low Stock Text",
+      "default": "NightForge sells out frequently due to premium ingredient sourcing"
+    },
+    {
+      "type": "header",
+      "content": "Free Shipping Progress"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_free_shipping",
+      "label": "Show free shipping bar",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "label": "Free shipping threshold ($)",
+      "min": 25,
+      "max": 200,
+      "step": 5,
+      "default": 50,
+      "unit": "$"
+    },
+    {
+      "type": "header",
+      "content": "Social Proof"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_proof",
+      "label": "Show social proof messages",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "social_proof_1",
+      "label": "Message 1",
+      "default": "12 people ordered NightForge today"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_2",
+      "label": "Message 2",
+      "default": "A customer in Texas just ordered 2 bottles"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_3",
+      "label": "Message 3",
+      "default": "23 people are viewing NightForge right now"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_4",
+      "label": "Message 4",
+      "default": "A customer in California just placed an order"
+    },
+    {
+      "type": "text",
+      "id": "social_proof_5",
+      "label": "Message 5",
+      "default": "NightForge is trending this week"
+    },
+    {
+      "type": "header",
+      "content": "Guarantee"
     },
     {
       "type": "text",

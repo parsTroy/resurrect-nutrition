@@ -11,6 +11,17 @@
       "block_order": ["pf1", "pf2", "pf3", "pf4"],
       "settings": {
         "product_label": "Resurrect Nutrition",
+        "show_low_stock": true,
+        "low_stock_label": "Limited stock",
+        "low_stock_text": "NightForge sells out frequently due to premium ingredient sourcing",
+        "show_free_shipping": true,
+        "free_shipping_threshold": 50,
+        "show_social_proof": true,
+        "social_proof_1": "12 people ordered NightForge today",
+        "social_proof_2": "A customer in Texas just ordered 2 bottles",
+        "social_proof_3": "23 people are viewing NightForge right now",
+        "social_proof_4": "A customer in California just placed an order",
+        "social_proof_5": "NightForge is trending this week",
         "guarantee_title": "Satisfaction Guarantee",
         "guarantee_text": "We stand behind NightForge. If you're not satisfied with your results, contact us and we'll make it right. Premium quality, zero risk."
       }
