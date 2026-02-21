@@ -1,0 +1,50 @@
+<section class="proof-bar">
+  <div class="container">
+    <div class="proof-bar-inner">
+      {% for block in section.blocks %}
+        {% unless forloop.first %}<div class="proof-divider"></div>{% endunless %}
+        <div class="proof-item" {{ block.shopify_attributes }}>
+          <div class="proof-item-value">{{ block.settings.value }}</div>
+          <div class="proof-item-label">{{ block.settings.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Bar",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "3"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Premium Mg Forms"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Bar",
+      "blocks": [
+        { "type": "stat", "settings": { "value": "3", "label": "Premium Mg Forms" } },
+        { "type": "stat", "settings": { "value": "0", "label": "Fillers or Buffers" } },
+        { "type": "stat", "settings": { "value": "100%", "label": "Premium Grade" } },
+        { "type": "stat", "settings": { "value": "Night", "label": "Optimized Formula" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

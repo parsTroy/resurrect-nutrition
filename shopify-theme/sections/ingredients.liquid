@@ -1,0 +1,121 @@
+<section class="ingredients" id="ingredients">
+  <div class="container">
+    <div class="ingredients-inner">
+      <div class="ingredients-content">
+        <div class="section-label">{{ section.settings.label }}</div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+        <div class="ingredient-list">
+          {% for block in section.blocks %}
+            {% if block.type == 'benefit' %}
+              <div class="ingredient-item" {{ block.shopify_attributes }}>
+                <div class="ingredient-marker"></div>
+                <div>
+                  <h4>{{ block.settings.title }}</h4>
+                  <p>{{ block.settings.description }}</p>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="ingredients-visual">
+        <div class="tri-blend-label">{{ section.settings.tri_blend_label }}</div>
+        <div class="tri-blend-forms">
+          {% for block in section.blocks %}
+            {% if block.type == 'form' %}
+              <div class="tri-blend-form" {{ block.shopify_attributes }}>
+                <h4>{{ block.settings.title }}</h4>
+                <p>{{ block.settings.description }}</p>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Ingredients"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why the <span class='highlight'>Tri-Blend</span> Matters"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "A single form of magnesium has limitations. By combining three premium, bioavailable forms, NightForge delivers complete coverage that cheap supplements simply cannot match."
+    },
+    {
+      "type": "text",
+      "id": "tri_blend_label",
+      "label": "Tri-Blend Card Label",
+      "default": "The Tri-Blend"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Ingredient Benefit",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Benefit description."
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "name": "Tri-Blend Form",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Form Title",
+          "default": "Form — Function"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Form Description",
+          "default": "Form description."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients",
+      "blocks": [
+        { "type": "benefit", "settings": { "title": "Superior Bioavailability", "description": "Each form is selected for high absorption rates, ensuring your body actually uses what you take." } },
+        { "type": "benefit", "settings": { "title": "No Cheap Forms", "description": "We exclude magnesium oxide and citrate entirely. These are the lowest-quality forms used to cut costs." } },
+        { "type": "benefit", "settings": { "title": "Multi-Pathway Absorption", "description": "Three forms means three pathways for absorption. Your body gets more magnesium from every dose." } },
+        { "type": "benefit", "settings": { "title": "Clean Formula", "description": "No fillers, no buffers, no unnecessary additives. What you see on the label is what you get." } },
+        { "type": "form", "settings": { "title": "Form 1 — Brain & Cognition", "description": "Targets cognitive function, helping reduce brain fog and support mental clarity during recovery." } },
+        { "type": "form", "settings": { "title": "Form 2 — Muscle & Recovery", "description": "Supports muscle relaxation and physical recovery, ideal for athletes and active individuals." } },
+        { "type": "form", "settings": { "title": "Form 3 — Sleep & Nervous System", "description": "Promotes deep sleep quality and nervous system regulation for complete nighttime restoration." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

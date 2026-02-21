@@ -1,0 +1,77 @@
+<section class="founder" id="founder">
+  <div class="container">
+    <div class="founder-inner">
+      <div class="founder-image-wrapper">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.image.alt | default: 'Founder' }}" loading="lazy">
+        {% else %}
+          <p>Founder photo</p>
+        {% endif %}
+      </div>
+      <div class="founder-content">
+        <div class="section-label">{{ section.settings.label }}</div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+        <blockquote class="founder-quote">
+          "{{ section.settings.quote }}"
+        </blockquote>
+        <p class="founder-name">{{ section.settings.founder_name }}</p>
+        <p class="founder-title">{{ section.settings.founder_role }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Founder Story",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "The Story"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Why I Built <span class='highlight'>NightForge</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Story Text",
+      "default": "I spent years trying magnesium supplements that promised results but never delivered. Cheap forms, fillers, and ingredients that looked good on a label but did nothing in the body."
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "I was tired of wasting money on supplements that didn't work. So I built one that does. NightForge uses only premium magnesium forms with zero compromise on quality."
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "Founder, Resurrect Nutrition"
+    },
+    {
+      "type": "text",
+      "id": "founder_role",
+      "label": "Founder Title",
+      "default": "Driven by results, not profit margins"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Founder Story"
+    }
+  ]
+}
+{% endschema %}

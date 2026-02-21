@@ -1,0 +1,142 @@
+<section class="product-section">
+  <div class="container">
+    <div class="product-inner">
+      <!-- Product Image -->
+      <div class="product-image-wrapper">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 960 }}" alt="{{ product.featured_image.alt | default: product.title }}" loading="eager">
+        {% else %}
+          <img src="{{ 'hero.png' | asset_url }}" alt="{{ product.title }}" loading="eager">
+        {% endif %}
+      </div>
+
+      <!-- Product Details -->
+      <div class="product-details">
+        <div class="section-label">{{ section.settings.product_label }}</div>
+        <h1 class="product-title">{{ product.title }}</h1>
+        <div class="product-price">{{ product.price | money }}</div>
+        <div class="product-description">{{ product.description }}</div>
+
+        <!-- Add to Cart Form -->
+        {% form 'product', product %}
+          {% if product.variants.size > 1 %}
+            <div class="product-form-qty" style="margin-bottom:16px">
+              <label for="variant-select">Option</label>
+              <select id="variant-select" name="id" style="width:auto;padding-right:40px">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                    {{ variant.title }} — {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+            </div>
+          {% else %}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          {% endif %}
+
+          <div class="product-form-qty">
+            <label for="qty">Quantity</label>
+            <input type="number" id="qty" name="quantity" value="1" min="1" max="10">
+          </div>
+
+          <button type="submit" class="btn-primary product-add-to-cart" {% unless product.available %}disabled{% endunless %}>
+            {% if product.available %}
+              {{ 'products.product.add_to_cart' | t }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            {% else %}
+              {{ 'products.product.sold_out' | t }}
+            {% endif %}
+          </button>
+        {% endform %}
+
+        <!-- Trust Badges -->
+        <div class="product-trust">
+          <span class="product-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Secure Checkout
+          </span>
+          <span class="product-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Privacy Protected
+          </span>
+          <span class="product-trust-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Fast Shipping
+          </span>
+        </div>
+
+        <!-- Guarantee -->
+        <div class="product-guarantee">
+          <div class="product-guarantee-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <div class="product-guarantee-title">{{ section.settings.guarantee_title }}</div>
+            <div class="product-guarantee-desc">{{ section.settings.guarantee_text }}</div>
+          </div>
+        </div>
+
+        <!-- Feature Reminders -->
+        <div class="product-features">
+          {% for block in section.blocks %}
+            <div class="product-feature-item" {{ block.shopify_attributes }}>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ block.settings.text }}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Info",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_label",
+      "label": "Product Label",
+      "default": "Resurrect Nutrition"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_title",
+      "label": "Guarantee Title",
+      "default": "Satisfaction Guarantee"
+    },
+    {
+      "type": "textarea",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "We stand behind NightForge. If you're not satisfied with your results, contact us and we'll make it right. Premium quality, zero risk."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature Reminder",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Info",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Premium Magnesium Tri-Blend — 3 bioavailable forms" } },
+        { "type": "feature", "settings": { "text": "Zero fillers, zero buffers, zero cheap ingredients" } },
+        { "type": "feature", "settings": { "text": "Formulated for nighttime recovery and deep sleep" } },
+        { "type": "feature", "settings": { "text": "No magnesium oxide or citrate — only premium forms" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

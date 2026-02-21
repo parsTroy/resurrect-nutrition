@@ -1,0 +1,83 @@
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <div class="section-label">{{ section.settings.label }}</div>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="faq-list">
+      {% for block in section.blocks %}
+        <div class="faq-item" {{ block.shopify_attributes }}>
+          <button class="faq-question" onclick="toggleFaq(this)">
+            {{ block.settings.question }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "FAQ"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Common <span class='highlight'>Questions</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Get clear, straightforward answers about NightForge and magnesium supplementation."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Question goes here?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Answer goes here."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "faq", "settings": { "question": "What makes NightForge different from other magnesium supplements?", "answer": "Most magnesium supplements use cheap forms like magnesium oxide or citrate, which have poor absorption rates. NightForge uses a premium tri-blend of three highly bioavailable magnesium forms with zero fillers and zero buffers. It's specifically formulated for nighttime recovery, not made to hit a low price point." } },
+        { "type": "faq", "settings": { "question": "Why should I take magnesium at night?", "answer": "Your body does most of its recovery and restoration during sleep. Magnesium supports muscle relaxation, nervous system regulation, and cognitive restoration — all processes that are most active during your sleep cycles. Taking it at night aligns the supplement with your body's natural recovery window." } },
+        { "type": "faq", "settings": { "question": "Why should I avoid magnesium oxide?", "answer": "Magnesium oxide has one of the lowest bioavailability rates of all magnesium forms — meaning your body absorbs very little of it. It's widely used in supplements because it's extremely cheap to manufacture, not because it's effective. If your magnesium supplement contains oxide, most of it is passing through you unused." } },
+        { "type": "faq", "settings": { "question": "How long until I notice results?", "answer": "Many users report improvements in sleep quality within the first week. Cognitive clarity and reduced brain fog typically become noticeable within 2-3 weeks of consistent use. For full magnesium restoration, consistent daily use over 4-6 weeks is recommended, as your body rebuilds depleted stores." } },
+        { "type": "faq", "settings": { "question": "Who should take NightForge?", "answer": "NightForge is designed for anyone aged 12 and up who wants to support their sleep quality, recovery, and mental clarity. It's particularly effective for athletes, people experiencing brain fog, anyone struggling with sleep, and health-conscious individuals who want a premium supplement that actually works." } },
+        { "type": "faq", "settings": { "question": "What is a magnesium tri-blend?", "answer": "A tri-blend combines three different forms of magnesium, each targeting different functions in the body. Rather than relying on a single form with limited benefits, a tri-blend provides broader coverage — supporting brain function, muscle recovery, and sleep quality simultaneously through multiple absorption pathways." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

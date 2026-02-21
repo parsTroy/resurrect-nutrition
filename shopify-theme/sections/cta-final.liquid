@@ -1,0 +1,83 @@
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="section-label">{{ section.settings.label }}</div>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      <div class="final-cta-features">
+        {% for block in section.blocks %}
+          <span class="final-cta-feature" {{ block.shopify_attributes }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ block.settings.text }}
+          </span>
+        {% endfor %}
+      </div>
+      <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn-primary" style="font-size:1.1rem; padding: 18px 44px;">
+        {{ section.settings.cta_text }}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Final CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Ready?"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Stop Wasting Money on Supplements<br>That <span class='highlight'>Don't Work</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "NightForge is built for real results. Premium magnesium tri-blend. No fillers. No compromise."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop NightForge Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "Feature text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Final CTA",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "Premium Tri-Blend" } },
+        { "type": "feature", "settings": { "text": "Zero Fillers" } },
+        { "type": "feature", "settings": { "text": "Night Optimized" } },
+        { "type": "feature", "settings": { "text": "Science-Based" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

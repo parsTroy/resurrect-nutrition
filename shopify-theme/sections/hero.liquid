@@ -1,0 +1,131 @@
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          {{ section.settings.badge_text }}
+        </div>
+        <h1 class="hero-title">
+          {{ section.settings.title_line1 }} <span class="highlight">{{ section.settings.title_highlight1 }}</span><br>
+          {{ section.settings.title_line2 }} <span class="silver">{{ section.settings.title_highlight2 }}</span>
+        </h1>
+        <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+        <div class="hero-features">
+          {% for block in section.blocks %}
+            {% if block.type == 'feature_tag' %}
+              <span class="hero-feature-tag" {{ block.shopify_attributes }}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {{ block.settings.text }}
+              </span>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="hero-actions">
+          <a href="{{ section.settings.cta_link | default: '/collections/all' }}" class="btn-primary">
+            {{ section.settings.cta_text }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#benefits" class="btn-secondary">
+            Learn More
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="hero-image-placeholder">
+          {% if section.settings.image %}
+            <img src="{{ section.settings.image | image_url: width: 960 }}" alt="{{ section.settings.image.alt | default: 'NightForge Product' }}" loading="eager" width="480" height="600">
+          {% else %}
+            <img src="{{ 'hero.png' | asset_url }}" alt="NightForge Premium Magnesium Tri-Blend" loading="eager">
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "Premium Magnesium Tri-Blend"
+    },
+    {
+      "type": "text",
+      "id": "title_line1",
+      "label": "Title Line 1",
+      "default": "Build"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight1",
+      "label": "Title Highlight 1 (Orange)",
+      "default": "Strength"
+    },
+    {
+      "type": "text",
+      "id": "title_line2",
+      "label": "Title Line 2",
+      "default": "While You"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight2",
+      "label": "Title Highlight 2 (Silver)",
+      "default": "Sleep"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "NightForge is a premium magnesium tri-blend engineered for deep recovery, mental clarity, and nighttime restoration. No fillers. No cheap forms. Just results."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop NightForge"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_tag",
+      "name": "Feature Tag",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tag Text",
+          "default": "No Fillers"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "feature_tag", "settings": { "text": "No Fillers" } },
+        { "type": "feature_tag", "settings": { "text": "No Buffers" } },
+        { "type": "feature_tag", "settings": { "text": "Tri-Blend Formula" } },
+        { "type": "feature_tag", "settings": { "text": "Night Optimized" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

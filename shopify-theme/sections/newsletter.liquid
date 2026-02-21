@@ -1,0 +1,79 @@
+<section class="signup" id="signup">
+  <div class="container">
+    <div class="signup-inner">
+      <div class="section-label">{{ section.settings.label }}</div>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      <div class="signup-perks">
+        {% for block in section.blocks %}
+          <span class="signup-perk" {{ block.shopify_attributes }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {{ block.settings.text }}
+          </span>
+        {% endfor %}
+      </div>
+      {% form 'customer', class: 'signup-form' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input type="email" name="contact[email]" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      {% endform %}
+      <p class="signup-disclaimer">{{ section.settings.disclaimer }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Stay Informed"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Get the Science Behind <span class='highlight'>Better Recovery</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "Join our list for evidence-based content on magnesium, sleep optimization, and recovery science. No spam. No hype."
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "No spam. Unsubscribe anytime. We respect your inbox."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Perk Text",
+          "default": "Benefit text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter",
+      "blocks": [
+        { "type": "perk", "settings": { "text": "Magnesium education" } },
+        { "type": "perk", "settings": { "text": "Sleep optimization tips" } },
+        { "type": "perk", "settings": { "text": "Recovery science" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

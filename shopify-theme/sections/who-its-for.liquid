@@ -1,0 +1,100 @@
+<section class="who" id="who">
+  <div class="container">
+    <div class="who-header">
+      <div class="section-label">{{ section.settings.label }}</div>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="who-grid">
+      {% for block in section.blocks %}
+        <div class="who-card" {{ block.shopify_attributes }}>
+          <div class="who-card-icon">
+            {% case block.settings.icon %}
+              {% when 'moon' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              {% when 'brain' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              {% when 'chart' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+              {% when 'activity' %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              {% else %}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {% endcase %}
+          </div>
+          <h4>{{ block.settings.title }}</h4>
+          <p>{{ block.settings.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Who It's For",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Who It's For"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Built for People Who <span class='highlight'>Demand Results</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "NightForge is for anyone who is tired of supplements that don't work and wants real, noticeable improvement."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "persona",
+      "name": "Persona Card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "moon", "label": "Moon/Sleep" },
+            { "value": "brain", "label": "Brain/Clarity" },
+            { "value": "chart", "label": "Chart/Fitness" },
+            { "value": "activity", "label": "Activity/Performance" }
+          ],
+          "default": "moon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Target Audience"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Description of who this is for."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Who It's For",
+      "blocks": [
+        { "type": "persona", "settings": { "icon": "moon", "title": "Poor Sleepers", "description": "If you struggle with sleep quality, NightForge supports deeper, more restorative rest." } },
+        { "type": "persona", "settings": { "icon": "brain", "title": "Brain Fog Sufferers", "description": "Experience sharper mental clarity and reduced cognitive sluggishness." } },
+        { "type": "persona", "settings": { "icon": "chart", "title": "Athletes & Gym-Goers", "description": "Support muscle recovery and reduce soreness so you can train harder, more often." } },
+        { "type": "persona", "settings": { "icon": "activity", "title": "High Performers", "description": "Optimize your recovery and cognition. Perform at your peak every single day." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "product-info": {
+      "type": "product-info",
+      "blocks": {
+        "pf1": { "type": "feature", "settings": { "text": "Premium Magnesium Tri-Blend — 3 bioavailable forms" } },
+        "pf2": { "type": "feature", "settings": { "text": "Zero fillers, zero buffers, zero cheap ingredients" } },
+        "pf3": { "type": "feature", "settings": { "text": "Formulated for nighttime recovery and deep sleep" } },
+        "pf4": { "type": "feature", "settings": { "text": "No magnesium oxide or citrate — only premium forms" } }
+      },
+      "block_order": ["pf1", "pf2", "pf3", "pf4"],
+      "settings": {
+        "product_label": "Resurrect Nutrition",
+        "guarantee_title": "Satisfaction Guarantee",
+        "guarantee_text": "We stand behind NightForge. If you're not satisfied with your results, contact us and we'll make it right. Premium quality, zero risk."
+      }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "icon": "users", "title": "Deep Sleep Recovery", "description": "Supports your body's natural ability to recover and restore during your deepest sleep cycles." } },
+        "b2": { "type": "benefit", "settings": { "icon": "brain", "title": "Reduce Brain Fog", "description": "Wake up with sharper mental clarity. Magnesium plays a critical role in cognitive function and neural communication." } },
+        "b3": { "type": "benefit", "settings": { "icon": "chart", "title": "Muscle Recovery", "description": "Supports muscle repair and reduces tension so you wake up ready to perform at your best." } },
+        "b4": { "type": "benefit", "settings": { "icon": "activity", "title": "Nervous System Support", "description": "Magnesium is essential for nervous system regulation. NightForge provides the forms your body actually absorbs." } },
+        "b5": { "type": "benefit", "settings": { "icon": "sun", "title": "Restore Mg Levels", "description": "Most people are magnesium deficient. NightForge uses bioavailable forms to effectively restore your levels." } },
+        "b6": { "type": "benefit", "settings": { "icon": "moon", "title": "Night Optimized", "description": "Specifically designed to be taken before bed. Works with your circadian rhythm, not against it." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
+      "settings": {
+        "label": "Benefits",
+        "title": "What NightForge Does<br>for <span class='highlight'>Your Body</span>",
+        "subtitle": "Every ingredient and every dose is formulated to work with your body's natural recovery processes during sleep."
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "f1": { "type": "faq", "settings": { "question": "What makes NightForge different from other magnesium supplements?", "answer": "Most magnesium supplements use cheap forms like magnesium oxide or citrate, which have poor absorption rates. NightForge uses a premium tri-blend of three highly bioavailable magnesium forms with zero fillers and zero buffers." } },
+        "f2": { "type": "faq", "settings": { "question": "Why should I take magnesium at night?", "answer": "Your body does most of its recovery and restoration during sleep. Magnesium supports muscle relaxation, nervous system regulation, and cognitive restoration — all processes that are most active during your sleep cycles." } },
+        "f3": { "type": "faq", "settings": { "question": "How long until I notice results?", "answer": "Many users report improvements in sleep quality within the first week. Cognitive clarity and reduced brain fog typically become noticeable within 2-3 weeks of consistent use." } }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {
+        "label": "FAQ",
+        "title": "Common <span class='highlight'>Questions</span>",
+        "subtitle": "Get clear, straightforward answers about NightForge and magnesium supplementation."
+      }
+    }
+  },
+  "order": [
+    "product-info",
+    "benefits",
+    "faq"
+  ]
+}

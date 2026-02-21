@@ -1,0 +1,130 @@
+<section class="difference" id="difference">
+  <div class="container">
+    <div class="difference-inner">
+      <div class="difference-content">
+        <div class="section-label">{{ section.settings.label }}</div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+      <div class="comparison-cards">
+        <div class="comparison-card comparison-card--bad">
+          <div class="comparison-card-header">
+            <div class="comparison-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </div>
+            <div class="comparison-card-label">{{ section.settings.bad_label }}</div>
+          </div>
+          <ul class="comparison-list">
+            {% for block in section.blocks %}
+              {% if block.type == 'bad_point' %}
+                <li {{ block.shopify_attributes }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  {{ block.settings.text }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="comparison-card comparison-card--good">
+          <div class="comparison-card-header">
+            <div class="comparison-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="comparison-card-label">{{ section.settings.good_label }}</div>
+          </div>
+          <ul class="comparison-list">
+            {% for block in section.blocks %}
+              {% if block.type == 'good_point' %}
+                <li {{ block.shopify_attributes }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {{ block.settings.text }}
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Comparison",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "The Difference"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Most Magnesium<br>Supplements <span class='highlight'>Don't Work</span>"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "The supplement industry is filled with cheap magnesium forms that your body can barely absorb. NightForge was built to fix that."
+    },
+    {
+      "type": "text",
+      "id": "bad_label",
+      "label": "Bad Card Label",
+      "default": "Typical Supplements"
+    },
+    {
+      "type": "text",
+      "id": "good_label",
+      "label": "Good Card Label",
+      "default": "NightForge"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bad_point",
+      "name": "Competitor Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Poor quality ingredient"
+        }
+      ]
+    },
+    {
+      "type": "good_point",
+      "name": "NightForge Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Premium quality ingredient"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Comparison",
+      "blocks": [
+        { "type": "bad_point", "settings": { "text": "Magnesium oxide — poor absorption rate" } },
+        { "type": "bad_point", "settings": { "text": "Magnesium citrate — cheap filler form" } },
+        { "type": "bad_point", "settings": { "text": "Loaded with fillers and buffers" } },
+        { "type": "bad_point", "settings": { "text": "Designed for cost savings, not results" } },
+        { "type": "bad_point", "settings": { "text": "Single-form magnesium only" } },
+        { "type": "good_point", "settings": { "text": "Premium magnesium tri-blend formula" } },
+        { "type": "good_point", "settings": { "text": "Zero fillers, zero buffers" } },
+        { "type": "good_point", "settings": { "text": "No magnesium oxide or citrate" } },
+        { "type": "good_point", "settings": { "text": "Designed for effectiveness" } },
+        { "type": "good_point", "settings": { "text": "Optimized for nighttime recovery" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

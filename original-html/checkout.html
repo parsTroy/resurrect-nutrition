@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — NightForge | Resurrect Nutrition</title>
+  <meta name="description" content="Complete your NightForge order. Premium Magnesium Tri-Blend for deep recovery, mental clarity, and nighttime restoration.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-tertiary: #1a1a1a;
+      --bg-card: #141414;
+      --orange: #e8600a;
+      --orange-light: #ff7a1a;
+      --orange-glow: rgba(232, 96, 10, 0.15);
+      --orange-glow-strong: rgba(232, 96, 10, 0.3);
+      --silver: #c0c0c0;
+      --silver-light: #d9d9d9;
+      --silver-dark: #8a8a8a;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0a0;
+      --text-muted: #666666;
+      --border: #222222;
+      --border-light: #2a2a2a;
+      --green: #2ecc71;
+      --green-muted: rgba(46, 204, 113, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ===== NAV ===== */
+    .checkout-nav {
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    .checkout-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .checkout-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkout-nav-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .checkout-nav-icon svg {
+      width: 15px;
+      height: 15px;
+    }
+
+    .checkout-nav-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .checkout-nav-name span {
+      color: var(--silver-dark);
+      font-weight: 400;
+    }
+
+    .checkout-nav-secure {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .checkout-nav-secure svg {
+      width: 14px;
+      height: 14px;
+      color: var(--green);
+    }
+
+    .checkout-nav-back {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .checkout-nav-back:hover {
+      color: var(--text-secondary);
+    }
+
+    .checkout-nav-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .progress-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .progress-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .progress-step.active {
+      color: var(--orange);
+    }
+
+    .progress-step.done {
+      color: var(--green);
+    }
+
+    .progress-step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1.5px solid var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .progress-step.active .progress-step-num {
+      border-color: var(--orange);
+      background: var(--orange-glow);
+    }
+
+    .progress-step.done .progress-step-num {
+      border-color: var(--green);
+      background: var(--green-muted);
+    }
+
+    .progress-connector {
+      width: 48px;
+      height: 1px;
+      background: var(--border-light);
+    }
+
+    /* ===== MAIN LAYOUT ===== */
+    .checkout-main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* ===== LEFT COLUMN — FORM ===== */
+    .checkout-form-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .form-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .form-section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-section-title svg {
+      width: 20px;
+      height: 20px;
+      color: var(--orange);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-row.full {
+      grid-template-columns: 1fr;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group select {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+    }
+
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--orange);
+    }
+
+    .form-group input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .card-row {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 0.5fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .card-icons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .card-icon-img {
+      width: 42px;
+      height: 28px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== RIGHT COLUMN — ORDER SUMMARY ===== */
+    .order-col {
+      position: sticky;
+      top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .order-summary {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .order-summary-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    /* Product in cart */
+    .order-product {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    .order-product-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .order-product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .order-product-details {
+      flex: 1;
+    }
+
+    .order-product-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .order-product-variant {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .order-product-qty {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .qty-btn:hover {
+      border-color: var(--text-muted);
+    }
+
+    .qty-value {
+      font-size: 0.9rem;
+      font-weight: 600;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .order-product-price {
+      font-size: 1rem;
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* Quantity discount */
+    .qty-discount-bar {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .qty-discount-options {
+      display: flex;
+      gap: 8px;
+    }
+
+    .qty-option {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1.5px solid var(--border-light);
+      border-radius: 6px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .qty-option:hover {
+      border-color: var(--text-muted);
+    }
+
+    .qty-option.selected {
+      border-color: var(--orange);
+      background: var(--orange-glow);
+    }
+
+    .qty-option-count {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .qty-option.selected .qty-option-count {
+      color: var(--orange);
+    }
+
+    .qty-option-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .qty-option-save {
+      font-size: 0.65rem;
+      color: var(--green);
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    /* Order lines */
+    .order-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .order-line {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .order-line.savings {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .order-line-total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* CTA */
+    .checkout-cta {
+      width: 100%;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 18px 24px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.25s;
+      margin-top: 8px;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .checkout-cta:hover {
+      background: var(--orange-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(232, 96, 10, 0.35);
+    }
+
+    .checkout-cta svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* ===== URGENCY — SUBTLE ===== */
+
+    /* Low stock notice */
+    .low-stock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232, 96, 10, 0.06);
+      border: 1px solid rgba(232, 96, 10, 0.15);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .low-stock-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--orange);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: stockPulse 2s infinite;
+    }
+
+    @keyframes stockPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .low-stock strong {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    /* Recent activity */
+    .recent-activity {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      justify-content: center;
+    }
+
+    .recent-activity-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .recent-activity span {
+      color: var(--text-secondary);
+    }
+
+    /* Trust badges */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      padding: 20px 0 4px;
+    }
+
+    .trust-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .trust-badge-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .trust-badge-icon svg {
+      width: 18px;
+      height: 18px;
+      color: var(--silver-dark);
+    }
+
+    .trust-badge-text {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      text-align: center;
+    }
+
+    /* Guarantee banner */
+    .guarantee-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .guarantee-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--green-muted);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .guarantee-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--green);
+    }
+
+    .guarantee-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .guarantee-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Feature reminders */
+    .checkout-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .checkout-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .checkout-feature svg {
+      width: 16px;
+      height: 16px;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* Free shipping progress */
+    .shipping-progress {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .shipping-progress-text {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .shipping-progress-text svg {
+      width: 14px;
+      height: 14px;
+      color: var(--green);
+    }
+
+    .shipping-progress-text strong {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .shipping-bar {
+      height: 4px;
+      background: var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .shipping-bar-fill {
+      height: 100%;
+      background: var(--green);
+      border-radius: 4px;
+      width: 100%;
+      transition: width 0.6s ease;
+    }
+
+    /* Coupon field */
+    .coupon-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .coupon-row input {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 12px 14px;
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .coupon-row input:focus {
+      border-color: var(--orange);
+    }
+
+    .coupon-row input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .coupon-row button {
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .coupon-row button:hover {
+      border-color: var(--text-muted);
+      color: var(--text-primary);
+    }
+
+    /* ===== FOOTER ===== */
+    .checkout-footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+    }
+
+    .checkout-footer p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .checkout-main {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .order-col {
+        position: static;
+        order: -1;
+      }
+
+      .card-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .qty-discount-options {
+        flex-direction: column;
+      }
+
+      .trust-badges {
+        gap: 16px;
+      }
+
+      .checkout-nav-secure {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="checkout-nav">
+    <div class="checkout-nav-inner">
+      <a href="index.html" class="checkout-nav-brand">
+        <div class="checkout-nav-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="checkout-nav-name">Resurrect <span>Nutrition</span></div>
+      </a>
+      <div class="checkout-nav-secure">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Secure Checkout
+      </div>
+      <a href="index.html" class="checkout-nav-back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to shop
+      </a>
+    </div>
+  </nav>
+
+  <!-- PROGRESS -->
+  <div class="progress-bar">
+    <div class="progress-bar-inner">
+      <div class="progress-step done">
+        <div class="progress-step-num">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Cart
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step active">
+        <div class="progress-step-num">2</div>
+        Checkout
+      </div>
+      <div class="progress-connector"></div>
+      <div class="progress-step">
+        <div class="progress-step-num">3</div>
+        Confirmation
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="checkout-main">
+
+    <!-- LEFT — FORM -->
+    <div class="checkout-form-col">
+
+      <!-- Contact -->
+      <div class="form-section">
+        <div class="form-section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Contact Information
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="First name">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Last name">
+          </div>
+        </div>
+      </div>
+
+      <!-- Shipping -->
+      <div class="form-section">
+        <div class="form-section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Shipping Address
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="address">Street Address</label>
+            <input type="text" id="address" placeholder="123 Main Street">
+          </div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="address2">Apartment, suite, etc. (optional)</label>
+            <input type="text" id="address2" placeholder="Apt, Suite, Unit">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="City">
+          </div>
+          <div class="form-group">
+            <label for="state">State / Province</label>
+            <select id="state">
+              <option value="" disabled selected>Select</option>
+              <option>Alabama</option>
+              <option>Alaska</option>
+              <option>Arizona</option>
+              <option>California</option>
+              <option>Colorado</option>
+              <option>Florida</option>
+              <option>New York</option>
+              <option>Texas</option>
+              <option>Washington</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="zip">ZIP / Postal Code</label>
+            <input type="text" id="zip" placeholder="Postal code">
+          </div>
+          <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country">
+              <option>United States</option>
+              <option>Canada</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payment -->
+      <div class="form-section">
+        <div class="form-section-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Payment
+        </div>
+        <div class="card-icons">
+          <div class="card-icon-img">VISA</div>
+          <div class="card-icon-img">MC</div>
+          <div class="card-icon-img">AMEX</div>
+        </div>
+        <div class="form-row full">
+          <div class="form-group">
+            <label for="cardnum">Card Number</label>
+            <input type="text" id="cardnum" placeholder="1234 5678 9012 3456">
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="form-group">
+            <label for="cardname">Name on Card</label>
+            <input type="text" id="cardname" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label for="expiry">Expiry</label>
+            <input type="text" id="expiry" placeholder="MM / YY">
+          </div>
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="123">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT — ORDER SUMMARY -->
+    <div class="order-col">
+
+      <!-- Order Summary -->
+      <div class="order-summary">
+        <div class="order-summary-title">Order Summary</div>
+
+        <!-- Low stock indicator -->
+        <div class="low-stock">
+          <span class="low-stock-dot"></span>
+          <strong>Limited stock</strong> &mdash; NightForge sells out frequently due to premium ingredient sourcing
+        </div>
+
+        <!-- Product -->
+        <div class="order-product">
+          <div class="order-product-img">
+            <img src="hero.png" alt="NightForge">
+          </div>
+          <div class="order-product-details">
+            <div class="order-product-name">NightForge</div>
+            <div class="order-product-variant">Premium Magnesium Tri-Blend &bull; 30 Servings</div>
+            <div class="order-product-qty">
+              <button class="qty-btn" onclick="updateQty(-1)">-</button>
+              <span class="qty-value" id="qtyDisplay">1</span>
+              <button class="qty-btn" onclick="updateQty(1)">+</button>
+            </div>
+          </div>
+          <div class="order-product-price" id="itemPrice">$49.99</div>
+        </div>
+
+        <!-- Multi-bottle discount options -->
+        <div class="qty-discount-bar">
+          <div class="qty-discount-options">
+            <div class="qty-option selected" onclick="selectQty(1, this)">
+              <div class="qty-option-count">1 Bottle</div>
+              <div class="qty-option-label">30-day supply</div>
+            </div>
+            <div class="qty-option" onclick="selectQty(2, this)">
+              <div class="qty-option-count">2 Bottles</div>
+              <div class="qty-option-label">60-day supply</div>
+              <div class="qty-option-save">Save 5%</div>
+            </div>
+            <div class="qty-option" onclick="selectQty(3, this)">
+              <div class="qty-option-count">3 Bottles</div>
+              <div class="qty-option-label">90-day supply</div>
+              <div class="qty-option-save">Save 10%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Free shipping progress -->
+        <div class="shipping-progress" id="shippingProgress">
+          <div class="shipping-progress-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <span id="shippingText">You qualify for <strong>free shipping</strong></span>
+          </div>
+          <div class="shipping-bar">
+            <div class="shipping-bar-fill" id="shippingFill" style="width:100%"></div>
+          </div>
+        </div>
+
+        <!-- Coupon -->
+        <div class="coupon-row">
+          <input type="text" placeholder="Discount code">
+          <button>Apply</button>
+        </div>
+
+        <!-- Order lines -->
+        <div class="order-lines">
+          <div class="order-line">
+            <span>Subtotal</span>
+            <span id="subtotal">$49.99</span>
+          </div>
+          <div class="order-line savings" id="savingsRow" style="display:none">
+            <span>Multi-bottle savings</span>
+            <span id="savingsAmount">-$0.00</span>
+          </div>
+          <div class="order-line">
+            <span>Shipping</span>
+            <span id="shippingCost">Free</span>
+          </div>
+          <div class="order-line">
+            <span>Tax</span>
+            <span>Calculated at next step</span>
+          </div>
+        </div>
+        <div class="order-line-total">
+          <span>Total</span>
+          <span id="totalPrice">$49.99</span>
+        </div>
+
+        <!-- CTA -->
+        <button class="checkout-cta" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Complete Order
+        </button>
+
+        <!-- Recent activity -->
+        <div class="recent-activity" id="recentActivity">
+          <span class="recent-activity-dot"></span>
+          <span id="activityText">12 people ordered NightForge today</span>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="trust-badges">
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <span class="trust-badge-text">Secure<br>Checkout</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="trust-badge-text">Privacy<br>Protected</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <span class="trust-badge-text">Fast<br>Shipping</span>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span class="trust-badge-text">Quality<br>Guaranteed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee-card">
+        <div class="guarantee-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div class="guarantee-title">Satisfaction Guarantee</div>
+          <div class="guarantee-desc">We stand behind NightForge. If you're not satisfied with your results, contact us and we'll make it right. Premium quality, zero risk.</div>
+        </div>
+      </div>
+
+      <!-- Feature reminders -->
+      <div class="checkout-features">
+        <div class="checkout-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Premium Magnesium Tri-Blend — 3 bioavailable forms
+        </div>
+        <div class="checkout-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Zero fillers, zero buffers, zero cheap ingredients
+        </div>
+        <div class="checkout-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Formulated for nighttime recovery and deep sleep
+        </div>
+        <div class="checkout-feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          No magnesium oxide or citrate — only premium forms
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="checkout-footer">
+    <p>&copy; 2025 Resurrect Nutrition Inc. All rights reserved. Your payment information is encrypted and secure.</p>
+  </footer>
+
+  <script>
+    const UNIT_PRICE = 49.99;
+    const DISCOUNTS = { 1: 0, 2: 0.05, 3: 0.10 };
+    let currentQty = 1;
+
+    function selectQty(qty, el) {
+      currentQty = qty;
+      document.querySelectorAll('.qty-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      document.getElementById('qtyDisplay').textContent = qty;
+      recalc();
+    }
+
+    function updateQty(delta) {
+      let newQty = currentQty + delta;
+      if (newQty < 1) newQty = 1;
+      if (newQty > 5) newQty = 5;
+      currentQty = newQty;
+
+      document.getElementById('qtyDisplay').textContent = newQty;
+
+      // Sync highlight
+      document.querySelectorAll('.qty-option').forEach(o => o.classList.remove('selected'));
+      if (newQty <= 3) {
+        document.querySelectorAll('.qty-option')[newQty - 1].classList.add('selected');
+      }
+
+      recalc();
+    }
+
+    function recalc() {
+      const discount = DISCOUNTS[currentQty] || (currentQty >= 3 ? 0.10 : 0);
+      const subtotal = UNIT_PRICE * currentQty;
+      const savings = subtotal * discount;
+      const total = subtotal - savings;
+
+      document.getElementById('itemPrice').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('subtotal').textContent = '$' + subtotal.toFixed(2);
+      document.getElementById('totalPrice').textContent = '$' + total.toFixed(2);
+
+      const savingsRow = document.getElementById('savingsRow');
+      if (savings > 0) {
+        savingsRow.style.display = 'flex';
+        document.getElementById('savingsAmount').textContent = '-$' + savings.toFixed(2);
+      } else {
+        savingsRow.style.display = 'none';
+      }
+
+      // Shipping
+      const shippingFill = document.getElementById('shippingFill');
+      const shippingText = document.getElementById('shippingText');
+      const FREE_THRESHOLD = 50;
+      if (total >= FREE_THRESHOLD) {
+        shippingFill.style.width = '100%';
+        shippingText.innerHTML = 'You qualify for <strong>free shipping</strong>';
+        document.getElementById('shippingCost').textContent = 'Free';
+      } else {
+        const remaining = (FREE_THRESHOLD - total).toFixed(2);
+        const pct = Math.min((total / FREE_THRESHOLD) * 100, 100);
+        shippingFill.style.width = pct + '%';
+        shippingText.innerHTML = 'Add <strong>$' + remaining + '</strong> more for free shipping';
+        document.getElementById('shippingCost').textContent = '$4.99';
+      }
+    }
+
+    // Rotate recent activity messages
+    const activityMessages = [
+      '12 people ordered NightForge today',
+      'A customer in Texas just ordered 2 bottles',
+      '23 people are viewing NightForge right now',
+      'A customer in California just placed an order',
+      'NightForge is trending this week',
+    ];
+    let activityIdx = 0;
+
+    function rotateActivity() {
+      const el = document.getElementById('activityText');
+      el.style.opacity = '0';
+      setTimeout(() => {
+        activityIdx = (activityIdx + 1) % activityMessages.length;
+        el.textContent = activityMessages[activityIdx];
+        el.style.opacity = '1';
+      }, 300);
+    }
+
+    document.getElementById('activityText').style.transition = 'opacity 0.3s';
+    setInterval(rotateActivity, 5000);
+  </script>
+
+</body>
+</html>

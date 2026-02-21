@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title }}{% unless page_title contains shop.name %} — {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  {% if settings.color_orange != blank %}
+  <style>
+    :root {
+      --orange: {{ settings.color_orange }};
+      --orange-light: {{ settings.color_orange_light | default: '#ff7a1a' }};
+      --bg-primary: {{ settings.color_bg_primary | default: '#0a0a0a' }};
+      --bg-secondary: {{ settings.color_bg_secondary | default: '#111111' }};
+      --text-primary: {{ settings.color_text_primary | default: '#f0f0f0' }};
+      --text-secondary: {{ settings.color_text_secondary | default: '#a0a0a0' }};
+    }
+  </style>
+  {% endif %}
+</head>
+<body>
+  {% section 'header' %}
+
+  <main role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</body>
+</html>
