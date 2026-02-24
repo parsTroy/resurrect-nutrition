@@ -21,6 +21,7 @@
       </div>
       <div class="ingredients-visual">
         <div class="tri-blend-label">{{ section.settings.tri_blend_label }}</div>
+        <div class="tri-blend-dosage">{{ section.settings.dosage_text }}</div>
         <div class="tri-blend-forms">
           {% for block in section.blocks %}
             {% if block.type == 'form' %}
@@ -31,6 +32,7 @@
             {% endif %}
           {% endfor %}
         </div>
+        <div class="tri-blend-clean">{{ section.settings.clean_label }}</div>
       </div>
     </div>
   </div>
@@ -62,7 +64,19 @@
       "type": "text",
       "id": "tri_blend_label",
       "label": "Tri-Blend Card Label",
-      "default": "The Tri-Blend"
+      "default": "The Tri-Blend — 375mg Per Serving"
+    },
+    {
+      "type": "text",
+      "id": "dosage_text",
+      "label": "Dosage Text",
+      "default": "3 capsules per day · 125mg elemental Mg per capsule"
+    },
+    {
+      "type": "text",
+      "id": "clean_label",
+      "label": "Clean Label Text",
+      "default": "100% clean — no oxide, no citrate, no rice flour, no fillers"
     }
   ],
   "blocks": [
@@ -110,10 +124,10 @@
         { "type": "benefit", "settings": { "title": "Superior Bioavailability", "description": "Each form is selected for high absorption rates, ensuring your body actually uses what you take." } },
         { "type": "benefit", "settings": { "title": "No Cheap Forms", "description": "We exclude magnesium oxide and citrate entirely. These are the lowest-quality forms used to cut costs." } },
         { "type": "benefit", "settings": { "title": "Multi-Pathway Absorption", "description": "Three forms means three pathways for absorption. Your body gets more magnesium from every dose." } },
-        { "type": "benefit", "settings": { "title": "Clean Formula", "description": "No fillers, no buffers, no unnecessary additives. What you see on the label is what you get." } },
-        { "type": "form", "settings": { "title": "Form 1 — Brain & Cognition", "description": "Targets cognitive function, helping reduce brain fog and support mental clarity during recovery." } },
-        { "type": "form", "settings": { "title": "Form 2 — Muscle & Recovery", "description": "Supports muscle relaxation and physical recovery, ideal for athletes and active individuals." } },
-        { "type": "form", "settings": { "title": "Form 3 — Sleep & Nervous System", "description": "Promotes deep sleep quality and nervous system regulation for complete nighttime restoration." } }
+        { "type": "benefit", "settings": { "title": "Clean Formula", "description": "Zero fillers, zero buffers. Non-medicinal ingredient: Hypromellose (vegetable capsule). That's it." } },
+        { "type": "form", "settings": { "title": "Magnesium L-Threonate — Brain & Cognition", "description": "The only form clinically shown to cross the blood-brain barrier. Targets cognitive function, reduces brain fog, and supports mental clarity." } },
+        { "type": "form", "settings": { "title": "Magnesium Bisglycinate (Non-Buffered) — Muscle & Recovery", "description": "Highly bioavailable chelated form. Supports muscle relaxation, reduces tension, and promotes physical recovery without GI distress." } },
+        { "type": "form", "settings": { "title": "Magnesium Taurate — Sleep & Nervous System", "description": "Combines magnesium with taurine for cardiovascular and nervous system support. Promotes deep sleep quality and heart muscle function." } }
       ]
     }
   ]

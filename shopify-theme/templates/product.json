@@ -3,14 +3,23 @@
     "product-info": {
       "type": "product-info",
       "blocks": {
-        "pf1": { "type": "feature", "settings": { "text": "Premium Magnesium Tri-Blend — 3 bioavailable forms" } },
-        "pf2": { "type": "feature", "settings": { "text": "Zero fillers, zero buffers, zero cheap ingredients" } },
-        "pf3": { "type": "feature", "settings": { "text": "Formulated for nighttime recovery and deep sleep" } },
-        "pf4": { "type": "feature", "settings": { "text": "No magnesium oxide or citrate — only premium forms" } }
+        "pf1": { "type": "feature", "settings": { "text": "L-Threonate, Bisglycinate & Taurate tri-blend" } },
+        "pf2": { "type": "feature", "settings": { "text": "375mg elemental magnesium per serving (3 capsules)" } },
+        "pf3": { "type": "feature", "settings": { "text": "Zero fillers, zero buffers, zero oxide, zero citrate" } },
+        "pf4": { "type": "feature", "settings": { "text": "Only non-medicinal ingredient: Hypromellose vegetable capsule" } },
+        "pf5": { "type": "feature", "settings": { "text": "Formulated for nighttime recovery and deep sleep" } }
       },
-      "block_order": ["pf1", "pf2", "pf3", "pf4"],
+      "block_order": ["pf1", "pf2", "pf3", "pf4", "pf5"],
       "settings": {
         "product_label": "Resurrect Nutrition",
+        "show_supplement_facts": true,
+        "serving_size": "3 capsules once per day",
+        "servings_per_container": "30 (90-count bottle)",
+        "ingredient_name": "Magnesium (elemental)",
+        "amount_per_capsule": "125 mg",
+        "amount_per_serving": "375 mg",
+        "ingredient_forms": "Magnesium L-Threonate, Magnesium Bisglycinate non-buffered, Magnesium Taurate",
+        "non_medicinal": "Hypromellose (vegetable capsule)",
         "show_low_stock": true,
         "low_stock_label": "Limited stock",
         "low_stock_text": "NightForge sells out frequently due to premium ingredient sourcing",
@@ -30,9 +39,9 @@
       "type": "benefits",
       "blocks": {
         "b1": { "type": "benefit", "settings": { "icon": "users", "title": "Deep Sleep Recovery", "description": "Supports your body's natural ability to recover and restore during your deepest sleep cycles." } },
-        "b2": { "type": "benefit", "settings": { "icon": "brain", "title": "Reduce Brain Fog", "description": "Wake up with sharper mental clarity. Magnesium plays a critical role in cognitive function and neural communication." } },
-        "b3": { "type": "benefit", "settings": { "icon": "chart", "title": "Muscle Recovery", "description": "Supports muscle repair and reduces tension so you wake up ready to perform at your best." } },
-        "b4": { "type": "benefit", "settings": { "icon": "activity", "title": "Nervous System Support", "description": "Magnesium is essential for nervous system regulation. NightForge provides the forms your body actually absorbs." } },
+        "b2": { "type": "benefit", "settings": { "icon": "brain", "title": "Reduce Brain Fog", "description": "Wake up with sharper mental clarity. L-Threonate is the only magnesium form shown to cross the blood-brain barrier." } },
+        "b3": { "type": "benefit", "settings": { "icon": "chart", "title": "Muscle Recovery", "description": "Non-buffered Bisglycinate supports muscle repair and reduces tension so you wake up ready to perform." } },
+        "b4": { "type": "benefit", "settings": { "icon": "activity", "title": "Nervous System Support", "description": "Magnesium Taurate is essential for nervous system regulation and cardiovascular support." } },
         "b5": { "type": "benefit", "settings": { "icon": "sun", "title": "Restore Mg Levels", "description": "Most people are magnesium deficient. NightForge uses bioavailable forms to effectively restore your levels." } },
         "b6": { "type": "benefit", "settings": { "icon": "moon", "title": "Night Optimized", "description": "Specifically designed to be taken before bed. Works with your circadian rhythm, not against it." } }
       },
@@ -46,11 +55,14 @@
     "faq": {
       "type": "faq",
       "blocks": {
-        "f1": { "type": "faq", "settings": { "question": "What makes NightForge different from other magnesium supplements?", "answer": "Most magnesium supplements use cheap forms like magnesium oxide or citrate, which have poor absorption rates. NightForge uses a premium tri-blend of three highly bioavailable magnesium forms with zero fillers and zero buffers." } },
-        "f2": { "type": "faq", "settings": { "question": "Why should I take magnesium at night?", "answer": "Your body does most of its recovery and restoration during sleep. Magnesium supports muscle relaxation, nervous system regulation, and cognitive restoration — all processes that are most active during your sleep cycles." } },
-        "f3": { "type": "faq", "settings": { "question": "How long until I notice results?", "answer": "Many users report improvements in sleep quality within the first week. Cognitive clarity and reduced brain fog typically become noticeable within 2-3 weeks of consistent use." } }
+        "f1": { "type": "faq", "settings": { "question": "What makes NightForge different from other magnesium supplements?", "answer": "99% of magnesium supplements use cheap forms like oxide or citrate that barely absorb. NightForge uses a premium tri-blend of Magnesium L-Threonate, Bisglycinate (non-buffered), and Taurate — three highly bioavailable forms with zero fillers and zero buffers." } },
+        "f2": { "type": "faq", "settings": { "question": "What are the three forms of magnesium in NightForge?", "answer": "Magnesium L-Threonate (crosses the blood-brain barrier for cognitive support), Magnesium Bisglycinate non-buffered (highly absorbable chelated form for muscle recovery), and Magnesium Taurate (nervous system and cardiovascular support)." } },
+        "f3": { "type": "faq", "settings": { "question": "What is the recommended dosage?", "answer": "Take 3 capsules once per day before bed. Each capsule contains 125mg of elemental magnesium for a total of 375mg per serving. Each 90-count bottle is a 30-day supply." } },
+        "f4": { "type": "faq", "settings": { "question": "Why should I take magnesium at night?", "answer": "Your body does most of its recovery during sleep. Magnesium supports muscle relaxation, nervous system regulation, and cognitive restoration — all processes most active during sleep cycles." } },
+        "f5": { "type": "faq", "settings": { "question": "What are the non-medicinal ingredients?", "answer": "Hypromellose (vegetable capsule). That's it. No rice flour, no magnesium stearate, no fillers, no buffers. 100% clean." } },
+        "f6": { "type": "faq", "settings": { "question": "How long until I notice results?", "answer": "Many users report improvements in sleep quality within the first week. Cognitive clarity and reduced brain fog typically become noticeable within 2-3 weeks of consistent use." } }
       },
-      "block_order": ["f1", "f2", "f3"],
+      "block_order": ["f1", "f2", "f3", "f4", "f5", "f6"],
       "settings": {
         "label": "FAQ",
         "title": "Common <span class='highlight'>Questions</span>",

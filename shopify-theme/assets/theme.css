@@ -788,7 +788,21 @@ img {
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--orange);
-  margin-bottom: 32px;
+  margin-bottom: 8px;
+}
+
+.tri-blend-dosage {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.tri-blend-clean {
+  margin-top: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+  letter-spacing: 0.5px;
 }
 
 .tri-blend-forms {
@@ -938,6 +952,206 @@ img {
 .founder-title {
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.founder-story-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(232, 96, 10, 0.08);
+  border: 1px solid rgba(232, 96, 10, 0.25);
+  border-radius: 8px;
+  padding: 12px 24px;
+  color: var(--orange);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 24px 0;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.founder-story-toggle:hover {
+  background: rgba(232, 96, 10, 0.15);
+  border-color: var(--orange);
+}
+
+.founder-story-toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+}
+
+.founder-story-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+.founder-full-story {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.founder-full-story-inner {
+  padding: 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.founder-full-story-inner p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.founder-full-story-inner p:last-child {
+  margin-bottom: 0;
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* ===== SUPPLEMENT FACTS ===== */
+.supplement-facts {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.supplement-facts-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 14px 20px;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.supplement-facts-toggle:hover {
+  border-color: var(--orange);
+}
+
+.supplement-facts-toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.3s ease;
+  color: var(--orange);
+}
+
+.supplement-facts-toggle.active svg {
+  transform: rotate(180deg);
+}
+
+.supplement-facts-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.supplement-facts-inner {
+  padding: 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.supp-facts-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.supp-facts-table th,
+.supp-facts-table td {
+  text-align: left;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.supp-facts-table th {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.supp-facts-table td {
+  color: var(--text-secondary);
+}
+
+.supp-facts-table td:last-child {
+  text-align: right;
+  font-weight: 600;
+  color: var(--orange);
+}
+
+.supp-facts-serving {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--orange);
+}
+
+.supp-facts-serving strong {
+  color: var(--text-primary);
+}
+
+.supp-facts-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+.supp-facts-note strong {
+  color: var(--text-secondary);
+}
+
+.supp-facts-uses {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.supp-facts-uses h4 {
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.supp-facts-uses ul {
+  list-style: none;
+  padding: 0;
+}
+
+.supp-facts-uses li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.supp-facts-uses li svg {
+  width: 14px;
+  height: 14px;
+  color: var(--green);
+  flex-shrink: 0;
+  margin-top: 2px;
 }
 
 /* ===== FAQ ===== */

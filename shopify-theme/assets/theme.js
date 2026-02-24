@@ -134,3 +134,36 @@ document.addEventListener('change', function(e) {
     updateShippingBar();
   }
 });
+
+/* Founder Story Toggle */
+function toggleFounderStory(btn) {
+  var story = document.getElementById('founderFullStory');
+  var textSpan = btn.querySelector('.founder-story-toggle-text');
+  var isOpen = btn.classList.contains('active');
+
+  if (isOpen) {
+    story.style.maxHeight = null;
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+    if (textSpan) textSpan.textContent = "Read the Founder's Story";
+  } else {
+    story.style.maxHeight = story.scrollHeight + 'px';
+    btn.classList.add('active');
+    btn.setAttribute('aria-expanded', 'true');
+    if (textSpan) textSpan.textContent = 'Close Story';
+  }
+}
+
+/* Supplement Facts Toggle */
+function toggleSuppFacts(btn) {
+  var panel = document.getElementById('suppFactsPanel');
+  var isOpen = btn.classList.contains('active');
+
+  if (isOpen) {
+    panel.style.maxHeight = null;
+    btn.classList.remove('active');
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + 'px';
+    btn.classList.add('active');
+  }
+}
