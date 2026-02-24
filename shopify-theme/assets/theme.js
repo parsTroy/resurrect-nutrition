@@ -214,23 +214,38 @@ document.addEventListener('DOMContentLoaded', function() {
     updateShippingBar();
   }
 
-  /* AJAX Add to Cart */
-  var productForms = document.querySelectorAll('form[action="/cart/add"]');
-  productForms.forEach(function(form) {
+  /* AJAX Add to Cart — intercepts all product forms */
+  document.querySelectorAll('form[action*="/cart/add"]').forEach(function(form) {
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       var btn = form.querySelector('[type="submit"]');
+      if (!btn || btn.disabled) return;
+
       var originalText = btn.innerHTML;
       btn.disabled = true;
       btn.innerHTML = '<span>Adding...</span>';
 
-      var formData = new FormData(form);
+      var idInput = form.querySelector('[name="id"]');
+      var qtyInput = form.querySelector('[name="quantity"]');
+
+      if (!idInput || !idInput.value) {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        return;
+      }
 
       fetch('/cart/add.js', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          id: parseInt(idInput.value, 10),
+          quantity: qtyInput ? parseInt(qtyInput.value, 10) || 1 : 1
+        })
       })
-      .then(function(r) { return r.json(); })
+      .then(function(r) {
+        if (!r.ok) throw new Error('Add to cart failed: ' + r.status);
+        return r.json();
+      })
       .then(function(item) {
         btn.innerHTML = '<span>Added!</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
         setTimeout(function() {

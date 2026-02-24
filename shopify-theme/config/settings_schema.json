@@ -92,6 +92,17 @@
         "step": 5,
         "default": 50,
         "unit": "$"
+      },
+      {
+        "type": "url",
+        "id": "cart_continue_shopping_link",
+        "label": "Continue Shopping / Empty Cart Link"
+      },
+      {
+        "type": "text",
+        "id": "cart_empty_button_text",
+        "label": "Empty Cart Button Text",
+        "default": "Shop NightForge"
       }
     ]
   }
