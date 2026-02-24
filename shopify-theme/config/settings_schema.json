@@ -79,5 +79,20 @@
         "unit": "px"
       }
     ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "range",
+        "id": "free_shipping_threshold",
+        "label": "Free shipping threshold ($)",
+        "min": 25,
+        "max": 200,
+        "step": 5,
+        "default": 50,
+        "unit": "$"
+      }
+    ]
   }
 ]

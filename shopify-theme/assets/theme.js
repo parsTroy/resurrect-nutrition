@@ -1,5 +1,147 @@
 /* ===== NightForge Theme JS — Resurrect Nutrition ===== */
 
+/* ===== CART DRAWER ===== */
+
+function openCartDrawer() {
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  refreshCartDrawer();
+}
+
+function closeCartDrawer() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function refreshCartDrawer() {
+  fetch('/cart.js')
+    .then(function(r) { return r.json(); })
+    .then(function(cart) {
+      renderCartDrawer(cart);
+      updateCartCount(cart.item_count);
+    });
+}
+
+function renderCartDrawer(cart) {
+  var itemsEl = document.getElementById('cartItems');
+  var emptyEl = document.getElementById('cartEmpty');
+  var footerEl = document.getElementById('cartFooter');
+
+  if (cart.item_count === 0) {
+    itemsEl.innerHTML = '';
+    emptyEl.style.display = 'flex';
+    footerEl.style.display = 'none';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  footerEl.style.display = 'block';
+
+  var html = '';
+  cart.items.forEach(function(item, index) {
+    var imgSrc = item.image ? getSizedImage(item.image, '160x') : '';
+    var variantTitle = item.variant_title && item.variant_title !== 'Default Title' ? '<p class="cart-item-variant">' + item.variant_title + '</p>' : '';
+
+    html += '<div class="cart-item" data-line="' + (index + 1) + '">'
+      + '<div class="cart-item-image">'
+      + (imgSrc ? '<img src="' + imgSrc + '" alt="' + escapeHtml(item.title) + '">' : '')
+      + '</div>'
+      + '<div class="cart-item-info">'
+      + '<h4 class="cart-item-title">' + escapeHtml(item.product_title) + '</h4>'
+      + variantTitle
+      + '<p class="cart-item-price">' + formatMoney(item.price) + '</p>'
+      + '<div class="cart-item-controls">'
+      + '<div class="cart-item-qty">'
+      + '<button onclick="updateDrawerQty(' + (index + 1) + ', ' + (item.quantity - 1) + ')" aria-label="Decrease">-</button>'
+      + '<span>' + item.quantity + '</span>'
+      + '<button onclick="updateDrawerQty(' + (index + 1) + ', ' + (item.quantity + 1) + ')" aria-label="Increase">+</button>'
+      + '</div>'
+      + '<button class="cart-item-remove" onclick="updateDrawerQty(' + (index + 1) + ', 0)" aria-label="Remove">'
+      + '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+      + '</button>'
+      + '</div>'
+      + '</div>'
+      + '<div class="cart-item-line-price">' + formatMoney(item.line_price) + '</div>'
+      + '</div>';
+  });
+
+  itemsEl.innerHTML = html;
+
+  /* Update subtotal */
+  document.getElementById('cartSubtotal').textContent = formatMoney(cart.total_price);
+
+  /* Update shipping bar in drawer */
+  updateCartDrawerShipping(cart.total_price);
+}
+
+function updateCartDrawerShipping(totalCents) {
+  var threshold = (typeof cartShippingThreshold !== 'undefined') ? cartShippingThreshold : 50;
+  var totalDollars = totalCents / 100;
+  var fill = document.getElementById('cartShippingFill');
+  var text = document.getElementById('cartShippingText');
+
+  if (!fill || !text) return;
+
+  if (totalDollars >= threshold) {
+    fill.style.width = '100%';
+    text.innerHTML = 'You qualify for <strong>free shipping!</strong>';
+  } else {
+    var remaining = (threshold - totalDollars).toFixed(2);
+    var pct = Math.min((totalDollars / threshold) * 100, 100);
+    fill.style.width = pct + '%';
+    text.innerHTML = 'Add <strong>$' + remaining + '</strong> more for <strong>free shipping</strong>';
+  }
+}
+
+function updateDrawerQty(line, qty) {
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ line: line, quantity: Math.max(0, qty) })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(cart) {
+    renderCartDrawer(cart);
+    updateCartCount(cart.item_count);
+  });
+}
+
+function updateCartCount(count) {
+  var badge = document.getElementById('cartCount');
+  if (!badge) return;
+  if (count > 0) {
+    badge.textContent = count;
+    badge.style.display = 'flex';
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
+/* For the full cart page */
+function changeCartQty(line, qty) {
+  fetch('/cart/change.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ line: line, quantity: Math.max(0, qty) })
+  })
+  .then(function() {
+    window.location.reload();
+  });
+}
+
+function getSizedImage(src, size) {
+  if (!src) return '';
+  return src.replace(/(\.[^.]+)$/, '_' + size + '$1');
+}
+
+function escapeHtml(str) {
+  var div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 /* FAQ Accordion */
 function toggleFaq(btn) {
   var item = btn.parentElement;
@@ -71,6 +213,46 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof freeShippingThreshold !== 'undefined') {
     updateShippingBar();
   }
+
+  /* AJAX Add to Cart */
+  var productForms = document.querySelectorAll('form[action="/cart/add"]');
+  productForms.forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      var originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<span>Adding...</span>';
+
+      var formData = new FormData(form);
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        body: formData
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(item) {
+        btn.innerHTML = '<span>Added!</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+        setTimeout(function() {
+          btn.disabled = false;
+          btn.innerHTML = originalText;
+        }, 1500);
+        openCartDrawer();
+      })
+      .catch(function(err) {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+        console.error('Add to cart error:', err);
+      });
+    });
+  });
+
+  /* Fetch initial cart count */
+  fetch('/cart.js')
+    .then(function(r) { return r.json(); })
+    .then(function(cart) {
+      updateCartCount(cart.item_count);
+    });
 });
 
 /* Variant Selector */

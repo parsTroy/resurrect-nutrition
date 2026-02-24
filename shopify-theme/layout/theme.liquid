@@ -38,6 +38,54 @@
 
   {% section 'footer' %}
 
+  <!-- Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+    <div class="cart-drawer-header">
+      <h3>Your Cart</h3>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()" aria-label="Close cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer-body" id="cartDrawerBody">
+      <!-- Empty state -->
+      <div class="cart-drawer-empty" id="cartEmpty">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <p>Your cart is empty</p>
+        <a href="/collections/all" class="btn-primary cart-drawer-shop">Shop NightForge</a>
+      </div>
+
+      <!-- Cart items (populated by JS) -->
+      <div class="cart-drawer-items" id="cartItems"></div>
+    </div>
+
+    <!-- Cart footer (hidden when empty) -->
+    <div class="cart-drawer-footer" id="cartFooter" style="display:none">
+      <div class="cart-drawer-shipping" id="cartShipping">
+        <div class="cart-drawer-shipping-text">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span id="cartShippingText">You qualify for <strong>free shipping!</strong></span>
+        </div>
+        <div class="shipping-bar">
+          <div class="shipping-bar-fill" id="cartShippingFill" style="width:100%"></div>
+        </div>
+      </div>
+      <div class="cart-drawer-subtotal">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">$0.00</span>
+      </div>
+      <a href="/checkout" class="btn-primary cart-drawer-checkout">
+        Checkout
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="/cart" class="cart-drawer-viewcart">View Full Cart</a>
+    </div>
+  </div>
+
+  <script>
+    var cartShippingThreshold = {{ settings.free_shipping_threshold | default: 50 }};
+  </script>
   <script src="{{ 'theme.js' | asset_url }}" defer></script>
 </body>
 </html>
