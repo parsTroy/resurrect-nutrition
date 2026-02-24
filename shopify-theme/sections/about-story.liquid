@@ -1,0 +1,74 @@
+<section class="about-story">
+  <div class="container">
+    <div class="about-story-inner">
+      <div class="about-story-image">
+        {% if section.settings.image %}
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.image.alt | default: 'AJ Vink — Founder' }}" loading="lazy">
+        {% else %}
+          <div class="about-story-image-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+        {% endif %}
+      </div>
+      <div class="about-story-content">
+        <div class="section-label">{{ section.settings.label }}</div>
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+        <div class="about-story-text">
+          {{ section.settings.story }}
+        </div>
+        <div class="about-story-signature">
+          <p class="founder-name">{{ section.settings.founder_name }}</p>
+          <p class="founder-title">{{ section.settings.founder_role }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Story",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder Image"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "The Discovery"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "A Note from the <span class='highlight'>Founder</span>"
+    },
+    {
+      "type": "richtext",
+      "id": "story",
+      "label": "Full Story",
+      "default": "<p>I didn't start NightForge because I wanted to sell a supplement. I started it because I was being lied to.</p><p>At 43, I thought I had the ritual figured out. I've been a founder since I was 19, running a successful business for over two decades. I hit the gym six days a week. My diet was dialed. On paper, I was winning.</p><p>But inside, I was fading.</p><p>The fog crept in slow — sluggish mornings, mental haze, recovery that never felt complete. I went to the specialists. I assumed the fire was going out — low testosterone, aging, the usual excuses. The results came back: My blood work was perfect. My testosterone was higher than men half my age.</p><p>Physically, I was a 10. Mentally, I was disappearing.</p><p>The specialist handed me a bottle of Magnesium and charged me $68. I almost laughed — I already took Magnesium. I thought he was a quack. Until I took it.</p><p>Within days, the world snapped back into focus. I didn't just sleep — I recovered. The fog didn't just lift — it evaporated.</p><p>Then I ran out.</p><p>I went back to the \"high-quality\" brand I had been buying at the store here in Canada. Within a week, I crashed. Hard. That was the moment of clarity.</p><p>I realized that 99% of the Magnesium on the shelf is garbage. It's \"buffered\" with cheap Oxide and Citrate — fillers that do nothing but pass through your system and drain your wallet.</p><p>In Canada, getting the real thing — the pure, non-buffered trinity of L-Threonate, Bisglycinate, and Taurate — was nearly impossible without being extorted by specialty clinics.</p><p>I spent hundreds of hours in the rabbit hole. I studied the chemistry, the absorption rates, and the blood-brain barrier research. I decided that if the product I needed didn't exist for a fair price, I would build it myself.</p><p>Night Forge is that result. It's not a pill. It's 20 years of business integrity, 6 days a week of discipline, and hundreds of hours of research forged into a single ritual. It's the product I needed when I was fading. It's the product my wife and daughters needed when they were fading. It's the product you need to wake up resurrected.</p><p>No buffers. No fillers. No lies.</p>"
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "— AJ Vink"
+    },
+    {
+      "type": "text",
+      "id": "founder_role",
+      "label": "Founder Title",
+      "default": "Founder, Resurrect Nutrition Inc."
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Story"
+    }
+  ]
+}
+{% endschema %}

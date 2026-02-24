@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "about-hero": {
+      "type": "about-hero",
+      "settings": {
+        "label": "Our Story",
+        "title": "Built on <span class='highlight'>Integrity</span>, Not Profit Margins",
+        "subtitle": "Resurrect Nutrition exists because the supplement industry failed us. NightForge is the product we built when we stopped accepting mediocrity."
+      }
+    },
+    "about-story": {
+      "type": "about-story",
+      "settings": {
+        "label": "The Discovery",
+        "title": "A Note from the <span class='highlight'>Founder</span>",
+        "story": "<p>I didn't start NightForge because I wanted to sell a supplement. I started it because I was being lied to.</p><p>At 43, I thought I had the ritual figured out. I've been a founder since I was 19, running a successful business for over two decades. I hit the gym six days a week. My diet was dialed. On paper, I was winning.</p><p>But inside, I was fading.</p><p>The fog crept in slow — sluggish mornings, mental haze, recovery that never felt complete. I went to the specialists. I assumed the fire was going out — low testosterone, aging, the usual excuses. The results came back: My blood work was perfect. My testosterone was higher than men half my age.</p><p>Physically, I was a 10. Mentally, I was disappearing.</p><p>The specialist handed me a bottle of Magnesium and charged me $68. I almost laughed — I already took Magnesium. I thought he was a quack. Until I took it.</p><p>Within days, the world snapped back into focus. I didn't just sleep — I recovered. The fog didn't just lift — it evaporated.</p><p>Then I ran out.</p><p>I went back to the \"high-quality\" brand I had been buying at the store here in Canada. Within a week, I crashed. Hard. That was the moment of clarity.</p><p>I realized that 99% of the Magnesium on the shelf is garbage. It's \"buffered\" with cheap Oxide and Citrate — fillers that do nothing but pass through your system and drain your wallet.</p><p>In Canada, getting the real thing — the pure, non-buffered trinity of L-Threonate, Bisglycinate, and Taurate — was nearly impossible without being extorted by specialty clinics.</p><p>I spent hundreds of hours in the rabbit hole. I studied the chemistry, the absorption rates, and the blood-brain barrier research. I decided that if the product I needed didn't exist for a fair price, I would build it myself.</p><p>Night Forge is that result. It's not a pill. It's 20 years of business integrity, 6 days a week of discipline, and hundreds of hours of research forged into a single ritual. It's the product I needed when I was fading. It's the product my wife and daughters needed when they were fading. It's the product you need to wake up resurrected.</p><p>No buffers. No fillers. No lies.</p>",
+        "founder_name": "— AJ Vink",
+        "founder_role": "Founder, Resurrect Nutrition Inc."
+      }
+    },
+    "about-mission": {
+      "type": "about-mission",
+      "blocks": {
+        "v1": { "type": "value", "settings": { "icon": "shield", "title": "No Compromise on Quality", "description": "We use only premium, bioavailable magnesium forms. No oxide, no citrate, no rice flour, no fillers. Ever." } },
+        "v2": { "type": "value", "settings": { "icon": "search", "title": "Full Transparency", "description": "What's on the label is what's in the bottle. No proprietary blends, no hidden ingredients, no misleading claims." } },
+        "v3": { "type": "value", "settings": { "icon": "check", "title": "Science Over Marketing", "description": "Every ingredient is backed by research. We chose L-Threonate, Bisglycinate, and Taurate because the data supports them — not because they're cheap." } },
+        "v4": { "type": "value", "settings": { "icon": "heart", "title": "Built for Our Own Family", "description": "AJ built NightForge for himself, his wife, and his daughters first. If it's not good enough for his family, it's not good enough for yours." } }
+      },
+      "block_order": ["v1", "v2", "v3", "v4"],
+      "settings": {
+        "label": "Our Mission",
+        "title": "What <span class='highlight'>Resurrect Nutrition</span> Stands For",
+        "subtitle": "We believe that what you put in your body should work — not just look good on a label. Every decision we make is guided by these principles."
+      }
+    },
+    "cta-final": {
+      "type": "cta-final",
+      "blocks": {
+        "cf1": { "type": "feature", "settings": { "text": "Premium Tri-Blend" } },
+        "cf2": { "type": "feature", "settings": { "text": "375mg Per Serving" } },
+        "cf3": { "type": "feature", "settings": { "text": "Zero Fillers" } },
+        "cf4": { "type": "feature", "settings": { "text": "Night Optimized" } }
+      },
+      "block_order": ["cf1", "cf2", "cf3", "cf4"],
+      "settings": {
+        "label": "Ready?",
+        "title": "Experience NightForge <span class='highlight'>For Yourself</span>",
+        "subtitle": "The product AJ built when he stopped accepting mediocrity. 375mg of premium magnesium tri-blend. No fillers. No compromise.",
+        "cta_text": "Shop NightForge Now"
+      }
+    }
+  },
+  "order": [
+    "about-hero",
+    "about-story",
+    "about-mission",
+    "cta-final"
+  ]
+}

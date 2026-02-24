@@ -1,0 +1,103 @@
+<section class="about-mission">
+  <div class="container">
+    <div class="about-mission-inner">
+      <div class="section-label">{{ section.settings.label }}</div>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      <div class="about-values-grid">
+        {% for block in section.blocks %}
+          <div class="about-value-card" {{ block.shopify_attributes }}>
+            <div class="about-value-icon">
+              {% case block.settings.icon %}
+                {% when 'shield' %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                {% when 'search' %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                {% when 'check' %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                {% when 'heart' %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                {% when 'bolt' %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                {% else %}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              {% endcase %}
+            </div>
+            <h3 class="about-value-title">{{ block.settings.title }}</h3>
+            <p class="about-value-desc">{{ block.settings.description }}</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Mission",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Section Label",
+      "default": "Our Mission"
+    },
+    {
+      "type": "html",
+      "id": "title",
+      "label": "Section Title",
+      "default": "What <span class='highlight'>Resurrect Nutrition</span> Stands For"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We believe that what you put in your body should work — not just look good on a label. Every decision we make is guided by these principles."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value",
+      "name": "Value",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "shield", "label": "Shield" },
+            { "value": "search", "label": "Search / Transparency" },
+            { "value": "check", "label": "Checkmark" },
+            { "value": "heart", "label": "Heart" },
+            { "value": "bolt", "label": "Bolt / Energy" }
+          ],
+          "default": "shield"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Value Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Value description."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Mission",
+      "blocks": [
+        { "type": "value", "settings": { "icon": "shield", "title": "No Compromise on Quality", "description": "We use only premium, bioavailable magnesium forms. No oxide, no citrate, no rice flour, no fillers. Ever." } },
+        { "type": "value", "settings": { "icon": "search", "title": "Full Transparency", "description": "What's on the label is what's in the bottle. No proprietary blends, no hidden ingredients, no misleading claims." } },
+        { "type": "value", "settings": { "icon": "check", "title": "Science Over Marketing", "description": "Every ingredient is backed by research. We chose L-Threonate, Bisglycinate, and Taurate because the data supports them — not because they're cheap." } },
+        { "type": "value", "settings": { "icon": "heart", "title": "Built for Our Own Family", "description": "AJ built NightForge for himself, his wife, and his daughters first. If it's not good enough for his family, it's not good enough for yours." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
